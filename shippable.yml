@@ -32,7 +32,7 @@ integrations:
     #   target: eb_docker
     #   application_name: "shippable-demo-eb"
     #   env_name: "eb-docker-quay"
-    #   bucket_name: "shippable-demo-eb"
+    #   bucket_name: "elasticbeanstalk-us-east-1-288971733297"
     #   region: "us-east-1"
     #   image_name: "$QUAY_URL/$REPO:$BRANCH.$BUILD_NUMBER"
     #   container_port: "80"
@@ -43,7 +43,7 @@ integrations:
     #   target: eb_docker
     #   application_name: "sample-node-eb-docker-app"
     #   env_name: "eb-docker-docker-hub"
-    #   bucket_name: "shippable-demo-eb"
+    #   bucket_name: "elasticbeanstalk-us-east-1-288971733297"
     #   region: "us-east-1"
     #   image_name: "$DOCKER_HUB_URL/$REPO:$BRANCH.$BUILD_NUMBER"
     #   container_port: "80"
@@ -54,7 +54,7 @@ integrations:
       target: eb_docker
       application_name: "shippable-demo-eb"
       env_name: "eb-docker"
-      bucket_name: "shippable-demo-eb"
+      bucket_name: "elasticbeanstalk-us-east-1-288971733297"
       region: "us-east-1"
       image_name: "$AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER"
       container_port: "80"
