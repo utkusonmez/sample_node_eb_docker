@@ -3,10 +3,10 @@ language: node_js
 
 env:
   global:
-    - DOCKER_HUB_URL: ttrahan # {account name}
-    - QUAY_URL: quay.io/ttrahan # quay.io/{account name}
-    - AMAZON_ECR_URL: 288971733297.dkr.ecr.us-east-1.amazonaws.com # {AWS account ID}.dkr.ecr.us-east-1
-    - GCR_URL: gcr.io/shippable-gke # gcr.io/{project id}
+    - DOCKER_HUB_URL=ttrahan # {account name}
+    - QUAY_URL=quay.io/ttrahan # quay.io/{account name}
+    - AMAZON_ECR_URL=288971733297.dkr.ecr.us-east-1.amazonaws.com # {AWS account ID}.dkr.ecr.us-east-1
+    - GCR_URL=gcr.io/shippable-gke # gcr.io/{project id}
 
 build:
   ci:
