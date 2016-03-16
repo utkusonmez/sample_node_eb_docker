@@ -3,6 +3,7 @@ language: node_js
 
 env:
   global:
+    - REPO=sample-node-eb-docker
     - DOCKER_HUB_URL=ttrahan # {account name}
     - QUAY_URL=quay.io/ttrahan # quay.io/{account name}
     - AMAZON_ECR_URL=288971733297.dkr.ecr.us-east-1.amazonaws.com # {AWS account ID}.dkr.ecr.us-east-1
@@ -12,16 +13,16 @@ build:
   ci:
     - echo 'CI is running'
   post_ci:
-      - docker build -t="ttrahan/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER" .
+      - docker build -t="ttrahan/$REPO:$BRANCH.$BUILD_NUMBER" .
       # Pushing to 3 different registries
       # DockerHub
-      # - docker push $DOCKER_HUB_URL/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER
+      # - docker push $DOCKER_HUB_URL/$REPO:$BRANCH.$BUILD_NUMBER
       # ECR
-      - docker tag ttrahan/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER $AMAZON_ECR_URL/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER
-      - docker push $AMAZON_ECR_URL/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER
+      - docker tag ttrahan/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER $AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER
+      - docker push $AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER
       # Quay
-      # - docker tag ttrahan/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER $QUAY_URL/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER
-      # - docker push $QUAY_URL/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER
+      # - docker tag ttrahan/$REPO:$BRANCH.$BUILD_NUMBER $QUAY_URL/$REPO:$BRANCH.$BUILD_NUMBER
+      # - docker push $QUAY_URL/$REPO:$BRANCH.$BUILD_NUMBER
 
 integrations:
   deploy:
@@ -33,7 +34,7 @@ integrations:
     #   env_name: "eb-docker-quay"
     #   bucket_name: "shippable-demo-eb"
     #   region: "us-east-1"
-    #   image_name: "$QUAY_URL/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER"
+    #   image_name: "$QUAY_URL/$REPO:$BRANCH.$BUILD_NUMBER"
     #   container_port: "80"
 
     # Public Image (docker)
@@ -44,7 +45,7 @@ integrations:
     #   env_name: "eb-docker-docker-hub"
     #   bucket_name: "shippable-demo-eb"
     #   region: "us-east-1"
-    #   image_name: "$DOCKER_HUB_URL/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER"
+    #   image_name: "$DOCKER_HUB_URL/$REPO:$BRANCH.$BUILD_NUMBER"
     #   container_port: "80"
 
     # Private Image (ECR)
@@ -55,7 +56,7 @@ integrations:
       env_name: "eb-docker"
       bucket_name: "shippable-demo-eb"
       region: "us-east-1"
-      image_name: "$AMAZON_ECR_URL/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER"
+      image_name: "$AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER"
       container_port: "80"
 
   hub:
