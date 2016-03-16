@@ -6,6 +6,5 @@ Elastic BeanStalk Docker Sample!
 A simple Node.js application with tests.<br/>
 First the docker image of the application will get pushed to [docker hub][2], then it will be deployed to [Amazon Elastic BeanStalk][1]
 
-
 [1]: https://aws.amazon.com/elasticbeanstalk/
 [2]: https://hub.docker.com/
