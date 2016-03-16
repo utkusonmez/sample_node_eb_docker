@@ -59,9 +59,11 @@ integrations:
       container_port: "80"
 
   hub:
-    - integrationName: "Amazon ECR"
+    - integrationName: "Amazon ECR - ttrahan"
       type: ecr
 #    - integrationName: "Docker Hub"
 #      type: docker
-#    - integrationName: "Quay.io"
+#    - integrationName: "Quay - ttrahan"
+#      type: quay.io
+#    - integrationName: "GCR-shippable-gke"
 #      type: quay.io
