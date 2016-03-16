@@ -18,7 +18,7 @@ build:
       # DockerHub
       # - docker push $DOCKER_HUB_URL/$REPO:$BRANCH.$BUILD_NUMBER
       # ECR
-      - docker tag ttrahan/sample_node_eb_docker:$BRANCH.$BUILD_NUMBER $AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER
+      - docker tag ttrahan/$REPO:$BRANCH.$BUILD_NUMBER $AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER
       - docker push $AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER
       # Quay
       # - docker tag ttrahan/$REPO:$BRANCH.$BUILD_NUMBER $QUAY_URL/$REPO:$BRANCH.$BUILD_NUMBER
