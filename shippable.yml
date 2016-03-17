@@ -16,11 +16,11 @@ build:
   post_ci:
       - docker build -t="ttrahan/$REPO:$BRANCH.$BUILD_NUMBER" .
       # Pushing to 4 different registries
-      # # DockerHub
-      # - docker push $DOCKER_HUB_URL/$REPO:$BRANCH.$BUILD_NUMBER
+      # DockerHub
+      - docker push $DOCKER_HUB_URL/$REPO:$BRANCH.$BUILD_NUMBER
       # ECR
-      - docker tag ttrahan/$REPO:$BRANCH.$BUILD_NUMBER $AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER
-      - docker push $AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER
+      # - docker tag ttrahan/$REPO:$BRANCH.$BUILD_NUMBER $AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER
+      # - docker push $AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER
       # # Google Container Registry
       # - docker tag ttrahan/$REPO:$BRANCH.$BUILD_NUMBER $GCR_URL/$REPO:$BRANCH.$BUILD_NUMBER
       # - docker push $GCR_URL/$REPO:$BRANCH.$BUILD_NUMBER
@@ -30,40 +30,29 @@ build:
 
 integrations:
   deploy:
-    # # Public Image (quay)
-    # - integrationName: "aws-test"
+    # Docker Hub
+    - integrationName: "aws-test"
+      type: aws
+      target: eb_docker
+      application_name: "sample-node-eb-docker-app"
+      env_name: "eb-docker"
+      bucket_name: "elasticbeanstalk-us-east-1-288971733297"
+      region: "us-east-1"
+      image_name: "$DOCKER_HUB_URL/$REPO"
+      image_tag: "$BRANCH.$BUILD_NUMBER"
+
+    # # Amazon ECR
+    # - integrationName: "AWS - ttrahan"
     #   type: aws
     #   target: eb_docker
     #   application_name: "shippable-demo-eb"
     #   env_name: "eb-docker"
     #   bucket_name: "elasticbeanstalk-us-east-1-288971733297"
     #   region: "us-east-1"
-    #   image_name: "$QUAY_URL/$REPO"
-    #   image_tag: "$BRANCH.$BUILD_NUMBER"
-    #
-    # # Public Image (docker)
-    # - integrationName: "aws-test"
-    #   type: aws
-    #   target: eb_docker
-    #   application_name: "sample-node-eb-docker-app"
-    #   env_name: "eb-docker"
-    #   bucket_name: "elasticbeanstalk-us-east-1-288971733297"
-    #   region: "us-east-1"
-    #   image_name: "$DOCKER_HUB_URL/$REPO"
+    #   image_name: "$AMAZON_ECR_URL/$REPO"
     #   image_tag: "$BRANCH.$BUILD_NUMBER"
 
-    # Private Image (ECR)
-    - integrationName: "AWS - ttrahan"
-      type: aws
-      target: eb_docker
-      application_name: "shippable-demo-eb"
-      env_name: "eb-docker"
-      bucket_name: "elasticbeanstalk-us-east-1-288971733297"
-      region: "us-east-1"
-      image_name: "$AMAZON_ECR_URL/$REPO"
-      image_tag: "$BRANCH.$BUILD_NUMBER"
-
-    # # Private Image (GCR)
+    # # Google Container Registry
     # - integrationName: "AWS - ttrahan"
     #   type: aws
     #   target: eb_docker
@@ -74,11 +63,23 @@ integrations:
     #   image_name: "$GCR_URL/$REPO"
     #   image_tag: "$BRANCH.$BUILD_NUMBER"
 
+    # # Quay
+    # - integrationName: "aws-test"
+    #   type: aws
+    #   target: eb_docker
+    #   application_name: "shippable-demo-eb"
+    #   env_name: "eb-docker"
+    #   bucket_name: "elasticbeanstalk-us-east-1-288971733297"
+    #   region: "us-east-1"
+    #   image_name: "$QUAY_URL/$REPO"
+    #   image_tag: "$BRANCH.$BUILD_NUMBER"
+    #
+
   hub:
-    - integrationName: "Amazon ECR - ttrahan"
-      type: ecr
-    # - integrationName: "Docker Hub"
-    #   type: docker
+    # - integrationName: "Amazon ECR - ttrahan"
+    #   type: ecr
+    - integrationName: "Docker Hub"
+      type: docker
     # - integrationName: "Quay - ttrahan"
     #   type: quay.io
     # - integrationName: "GCR-shippable-gke"
