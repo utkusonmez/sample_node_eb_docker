@@ -64,5 +64,5 @@ integrations:
     #   type: ecr
     # - integrationName: "Docker Hub"
     #   type: docker
-    - integrationName: "Quay.io - ttrahan"
+    - integrationName: "Quay - ttrahan"
       type: quay
