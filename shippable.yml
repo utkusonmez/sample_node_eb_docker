@@ -8,6 +8,7 @@ env:
     - QUAY_URL=quay.io/ttrahan # quay.io/{account name}
     - AMAZON_ECR_URL=288971733297.dkr.ecr.us-east-1.amazonaws.com # {AWS account ID}.dkr.ecr.us-east-1
     - GCR_URL=gcr.io/shippable-gke # gcr.io/{project id}
+    - AWS_EB_DOCKER_CONFIG="shippable-demo-eb/credentials/dockerconfig.all"
 
 build:
   ci:
@@ -37,8 +38,8 @@ integrations:
     #   env_name: "eb-docker"
     #   bucket_name: "elasticbeanstalk-us-east-1-288971733297"
     #   region: "us-east-1"
-    #   image_name: "$QUAY_URL/$REPO:$BRANCH.$BUILD_NUMBER"
-    #   container_port: "80"
+    #   image_name: "$QUAY_URL/$REPO"
+    #   image_tag: "$BRANCH.$BUILD_NUMBER"
     #
     # # Public Image (docker)
     # - integrationName: "aws-test"
@@ -48,8 +49,8 @@ integrations:
     #   env_name: "eb-docker"
     #   bucket_name: "elasticbeanstalk-us-east-1-288971733297"
     #   region: "us-east-1"
-    #   image_name: "$DOCKER_HUB_URL/$REPO:$BRANCH.$BUILD_NUMBER"
-    #   container_port: "80"
+    #   image_name: "$DOCKER_HUB_URL/$REPO"
+    #   image_tag: "$BRANCH.$BUILD_NUMBER"
 
     # Private Image (ECR)
     - integrationName: "AWS - ttrahan"
@@ -59,8 +60,8 @@ integrations:
       env_name: "eb-docker"
       bucket_name: "elasticbeanstalk-us-east-1-288971733297"
       region: "us-east-1"
-      image_name: "$AMAZON_ECR_URL/$REPO:$BRANCH.$BUILD_NUMBER"
-      container_port: "80"
+      image_name: "$AMAZON_ECR_URL/$REPO"
+      image_tag: "$BRANCH.$BUILD_NUMBER"
 
     # # Private Image (GCR)
     # - integrationName: "AWS - ttrahan"
@@ -70,8 +71,8 @@ integrations:
     #   env_name: "eb-docker"
     #   bucket_name: "elasticbeanstalk-us-east-1-288971733297"
     #   region: "us-east-1"
-    #   image_name: "$GCR_URL/$REPO:$BRANCH.$BUILD_NUMBER"
-    #   container_port: "80"
+    #   image_name: "$GCR_URL/$REPO"
+    #   image_tag: "$BRANCH.$BUILD_NUMBER"
 
   hub:
     - integrationName: "Amazon ECR - ttrahan"
