@@ -34,7 +34,7 @@ integrations:
     - integrationName: "AWS - ttrahan"
       type: aws
       target: eb_docker
-      application_name: "sample-node-eb-docker-app"
+      application_name: "shippable-eb-demo"
       env_name: "eb-docker"
       bucket_name: "elasticbeanstalk-us-east-1-288971733297"
       region: "us-east-1"
