@@ -31,13 +31,13 @@ build:
 integrations:
   deploy:
     # Amazon ECR
-    - integrationName: "AWS - ttrahan"
+    - integrationName: "AWS DEV"
       type: aws
       target: eb_docker
       application_name: "shippable-demo-eb"
       env_name: "eb-docker"
       bucket_name: "elasticbeanstalk-us-east-1-288971733297"
-      region: "us-east-1"
+      region: "eu-west-1"
       image_name: "$AMAZON_ECR_URL/$REPO"
       image_tag: "$BRANCH.$BUILD_NUMBER"
 
