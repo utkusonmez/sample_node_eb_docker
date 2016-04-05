@@ -3,7 +3,7 @@ language: node_js
 
 env:
   global:
-    - REPO=sample-node-eb-docker
+    - REPO=sample-node-eb-docker2
     - DOCKER_HUB_URL=shadysql # {account name}
     #- AMAZON_ECR_URL=288971733297.dkr.ecr.us-east-1.amazonaws.com # {AWS account ID}.dkr.ecr.us-east-1
     #- QUAY_URL="quay.io/ttrahan" # quay.io/{account name}
@@ -46,7 +46,7 @@ integrations:
        type: aws
        target: eb_docker
        application_name: "shippable-demo-eb"
-       env_name: "shippable-demo-eb"
+       env_name: "shippable-demo-eb2"
        bucket_name: "elasticbeanstalk-eu-west-1-972257354190"
        region: "eu-west-1"
        image_name: "$DOCKER_HUB_URL/$REPO"
