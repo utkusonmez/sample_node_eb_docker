@@ -35,8 +35,8 @@ integrations:
       type: aws
       target: eb_docker
       application_name: "shippable-demo-eb"
-      env_name: "eb-docker"
-      bucket_name: "elasticbeanstalk-us-east-1-288971733297"
+      env_name: "shippable-demo-eb"
+      bucket_name: "elasticbeanstalk-eu-west-1-972257354190"
       region: "eu-west-1"
       image_name: "$AMAZON_ECR_URL/$REPO"
       image_tag: "$BRANCH.$BUILD_NUMBER"
@@ -64,9 +64,9 @@ integrations:
     #   image_tag: "$BRANCH.$BUILD_NUMBER"
 
   hub:
-    - integrationName: "Amazon ECR - ttrahan"
-      type: ecr
-    # - integrationName: "Docker Hub"
-    #   type: docker
+    #- integrationName: "Amazon ECR - ttrahan"
+    # type: ecr
+     - integrationName: "MyDockerHub"
+       type: docker
     # - integrationName: "Quay - ttrahan"
     #   type: quay.io
