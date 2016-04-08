@@ -42,7 +42,7 @@ integrations:
   #    image_tag: "$BRANCH.$BUILD_NUMBER"
 
     # # Docker Hub
-     - integrationName: "AWS DEV"
+     - integrationName: "aws"
        type: aws
        target: eb_docker
        application_name: "shippable-demo-eb"
