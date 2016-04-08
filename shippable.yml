@@ -48,7 +48,7 @@ integrations:
        application_name: "shippable-demo-eb"
        env_name: "shippableDemoEb-env"
        bucket_name: "elasticbeanstalk-us-east-1-277794843796"
-       region: "eu-west-1"
+       region: "us-east-1"
        image_name: "$DOCKER_HUB_URL/$REPO"
        image_tag: "$BRANCH.$BUILD_NUMBER"
 
